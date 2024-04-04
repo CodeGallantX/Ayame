@@ -819,7 +819,7 @@ button[type="button"]:hover {
 <div id="withdrawSection" style="display: none;">
 {% block content %}
 <h2>Withdraw Money</h2>
-<form method="post">
+<form method="post" action="{% url 'withdraw'%}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Withdraw</button>
@@ -828,38 +828,31 @@ button[type="button"]:hover {
 <div id="withdrawMessage"></div>
 </div>
 
-<!-- depositForm.html -->
-<div id="depositSection" style="display: none;">
-    <h2>Deposit Money</h2>
-    <form id="depositForm">
-        <div class="form-group">
-            <label for="acc_no">Account Number</label>
-            <input type="text" id="acc_no" name="acc_no" placeholder="Enter your account number">
-        </div>
-        <div class="form-group">
-            <label for="amount">Amount to Deposit</label>
-            <input type="number" id="amount" name="amount" placeholder="Enter the amount">
-        </div>
-        <button type="submit">Deposit</button>
-        <button type="button" id="cancelDeposit">Cancel</button> <!-- Added cancel button -->
-    </form>
-    <div id="depositMessage"></div>
-</div>
-
+<!-- depositForm.html 
+<div id="withdrawSection" style="display: none;">
+{% block content %}
+<h2>Deposit Money</h2>
+<form method="post" action="{% url 'deposit'%}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Make Deposit</button>
+</form>
+{% endblock %}
+<div id="depositMessage"></div>
+</div>-->
 
 <!-- transferForm.html -->
 <div id="transferSection" style="display: none;">
-    <!-- Add this form inside your dashboard HTML where you want the transaction form to appear -->
-<form id="transferForm" style="display: none;">
-    <!-- Include fields from your TransferForm -->
+{% block content %}
+<h2>Transfer Money</h2>
+<form method="post" action="{% url 'transfer'%}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Submit Transfer</button>
+    <button type="submit">Transfer</button>
 </form>
-
-    <div id="transferMessage"></div>
+{% endblock %}
+<div id="transferMessage"></div>
 </div>
-
 <!------------------------------------TRANSACTION ZONE---------------------------------------->
     
     <div id="support" class="dashboard" style="display: none;">

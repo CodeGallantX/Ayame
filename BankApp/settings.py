@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'account.CustomUser'
+# AUTH_USER_MODEL = 'account.CustomUser'
 
 
 # Internationalization

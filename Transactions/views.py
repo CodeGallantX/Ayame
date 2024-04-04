@@ -5,8 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import FormView
 from .models import Transaction
-from .forms import TransferForm
-from Account.models import AccountData
+from account.models import AccountData
 from .forms import TransactionForm, TransferForm, WithdrawForm, DepositForm
 from django.contrib import messages
 

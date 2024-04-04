@@ -1,22 +1,22 @@
-from django.forms import forms
+from django import forms
 from .models import Transaction
 from account.models import AccountData
 
 class TransactionForm(forms.ModelForm):
-    ACCOUNT_CHOICES= (
-        ('savings':'Savings',
-        'current':'Current'),
+    ACCOUNT_CHOICES = (
+        ('savings', 'Savings'),
+        ('current', 'Current'),
     )
-
-    account = forms.ChoiceField(choices = ACCOUNT_CHOICES, label="Account Type: ")
+    account = forms.ChoiceField(choices=ACCOUNT_CHOICES, label="Account Type")
 
     class Meta:
         model = Transaction
         fields = ['account', 'amount', 'trans_type', 'description']
+
         
 class TransferForm(forms.Form):
     user_account = forms.IntegerField(label="Your Account Number")
-    recipient_account = forms.CharField(label="Recipient Account Number")
+    recipient_account = forms.IntegerField(label="Recipient Account Number")
     amount = forms.DecimalField(label="Amount")
     recipient_bank_name = forms.ChoiceField(choices=[], required=True)  # Add the new field
 

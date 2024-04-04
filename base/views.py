@@ -6,8 +6,6 @@ from django.contrib.auth import authenticate, login, logout
 from account.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
-from Transactions.models import Transaction
-from account.models import AccountData
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
@@ -18,6 +16,8 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.core.mail import EmailMessage, get_connection
 import random
+from account.models import AccountData
+from Transactions.models import Transaction
 
 
 def home(request):
@@ -25,7 +25,6 @@ def home(request):
 
 def error_404(request, exception):
     return render(request, 'base/404.html', status=404)
-
 
 @login_required
 def dashboard(request):
@@ -42,6 +41,7 @@ def dashboard(request):
         'recent_transactions': recent_transactions,
     }
     return render(request, 'base/dashboard.html', context)
+
 
 
 def contact(request):
