@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account Form</title>
+    <link rel="shortcut icon" type="image/png" href="https://ik.imagekit.io/mshcgnjju/image.png?updatedAt=1710462047544" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+      body {
+          font-family: Poppins, sans-serif;
+          background-color: #00040f;
+          margin: 0;
+          padding-top: 5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh; /* Added for full height */
+          gap: 5rem;
+      }
+
+      .container {
+          width: 70%; /* Adjusted width for responsiveness */
+          background-color: #00040f;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          padding: 30px;
+          box-sizing: border-box;
+          text-align: center; /* Center aligning */
+      }
+
+      h1 {
+          margin-bottom: 30px;
+          color: #fff;
+      }
+
+      form {
+          margin-top: 20px;
+      }
+
+      label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #ddd;
+          text-align: left; /* Adjusted text alignment */
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+          width: calc(100% - 20px); /* Adjusted input width */
+          padding: 10px;
+          background: #00040f;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 1px solid #fff;
+          box-sizing: border-box;
+          font-family: Poppins, sans-serif;
+          color: #fff;
+          margin-bottom: 20px;
+      }
+
+      input[type="password"]:last-child {
+          margin-bottom: 0; /* Remove bottom margin for the last password input */
+      }
+
+      .error-message {
+          color: #ff6347;
+          margin-top: 5px;
+          text-align: left; /* Adjusted text alignment */
+      }
+
+      .btn-con {
+          display: flex;
+          justify-content: space-between; /* Adjusted button alignment */
+          margin-top: 20px;
+      }
+
+      .btn {
+          background-color: #4fbdce;
+          color: #00040f;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-family: Poppins, sans-serif;
+      }
+
+      .btn:hover {
+          background-color: #4fadce;
+      }
+
+      .image {
+          text-align: center;
+          margin-bottom: 20px; /* Added margin for spacing */
+      }
+
+      .image img {
+          width: 35rem; /* Increased image size */
+      }
+
+      p {
+        color: aliceblue;
+      }
+
+      p a {
+        color: aliceblue;
+        transition: 0.3s ease-in;
+      }
+
+      p a:hover {
+        color: #4fbdce;
+      }
+  </style>
+</head>
+<body>
+
+  <div class="image">
+    <img src="https://ik.imagekit.io/mshcgnjju/bank-lock.svg?updatedAt=1710014965247" alt="">
+  </div>
+<div class="container">
+    <h1>Create Account</h1>
+    <form method="POST" id="user-account-form" action="/register/">
+        {% csrf_token %}
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name" placeholder="Enter your First Name">
+    
+        <label for="last_name">Last Name:</label> <!-- Added colon for consistency -->
+        <input type="text" name="last_name" id="last_name" placeholder="Enter your Last Name">
+    
+        <label for="email">Email Address:</label> <!-- Added colon for consistency -->
+        <input type="email" name="email" id="email" placeholder="Enter your Email Address">
+    
+        <label for="pass1">Password:</label> <!-- Added colon for consistency -->
+        <input type="password" name="pass1" id="pass1"  placeholder="Create a Password">
+    
+        <label for="pass2">Confirm your password:</label> <!-- Added colon for consistency -->
+        <input type="password" id="pass2" name="pass2"  placeholder="Confirm your Password">
+        
+        <button type="submit" class="btn">Submit</button>
+        <button class="btn" onclick="window.location.href='/'">Cancel</button>
+        <p>Have an account? <a href="/login">Login</a></p>
+    </form>
+    
+</div>
+
+</body>
+</html>

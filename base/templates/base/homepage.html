@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="https://ik.imagekit.io/mshcgnjju/image.png?updatedAt=1710462047544" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Infinity Finance</title>
+
+    <!-- JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        AOS.init();
+      });
+    </script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+      
+        const showSlide = (slideIndex) => {
+          slides.forEach((slide) => {
+            slide.style.display = "none";
+          });
+          slides[slideIndex].style.display = "block";
+        };
+      
+        const nextSlide = () => {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          showSlide(currentSlide);
+        };
+      
+        const prevSlide = () => {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          showSlide(currentSlide);
+        };
+      
+        const sliderBtnLeft = document.querySelector(".slider__btn--left");
+        const sliderBtnRight = document.querySelector(".slider__btn--right");
+      
+        sliderBtnLeft.addEventListener("click", prevSlide);
+        sliderBtnRight.addEventListener("click", nextSlide);
+      
+        showSlide(currentSlide); // Ensure the initial state is set correctly
+      
+        // Optional: Add autoplay
+        // const interval = setInterval(nextSlide, 5000);
+      
+        // Stop autoplay on button click
+        // sliderBtnLeft.addEventListener("click", () => clearInterval(interval));
+        // sliderBtnRight.addEventListener("click", () => clearInterval(interval));
+      });
+      
+
+      // Function to show content based on selected tab
+function showContent(tabNumber) {
+  // Get all tab buttons and content divs
+  var tabButtons = document.querySelectorAll('.operations__tab');
+  var contentSections = document.querySelectorAll('.operations__content');
+
+  // Remove 'active' class from all tab buttons and content divs
+  tabButtons.forEach(button => {
+      button.classList.remove('operations__tab--active');
+  });
+
+  contentSections.forEach(section => {
+      section.classList.remove('operations__content--active');
+  });
+
+  // Add 'active' class to the selected tab button and content div
+  document.querySelector('.operations__tab--' + tabNumber).classList.add('operations__tab--active');
+  document.querySelector('.operations__content--' + tabNumber).classList.add('operations__content--active');
+}
+
+      
+    </script>
+    
+
+    <!--CSS-->
+    <style>
+        :root {
+            --color-primary: #4fbdce;
+            --color-secondary: #ffcb03;
+            --color-tertiary: #ff585f;
+            --color-primary-darker: #4fadce;
+            --color-secondary-darker: #ffbb00;
+            --color-tertiary-darker: #fd424b;
+            --color-primary-opacity: #4fadce3a;
+            --color-secondary-opacity: #ffcd0331;
+            --color-tertiary-opacity: #ff58602d;
+            --gradient-primary: linear-gradient(to top left, #4fadce, #4fbdce);
+            --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
+          }
+          
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+          }
+          
+          html {
+            font-size: 62.5%;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+          }
+          
+          body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.9;
+            background-color: #00040f;
+            max-width: 100%;
+          }
+          
+          /* GENERAL ELEMENTS */
+          .section {
+            padding: 15rem 3rem;
+            transition: transform 1s, opacity 1s;
+          }
+          
+          .section--hidden {
+            opacity: 0;
+            transform: translateY(8rem);
+          }
+          
+          .section__title {
+            max-width: 80rem;
+            margin: 0 auto 8rem auto;
+          }
+          
+          .section__description {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+          }
+          
+          .section__header {
+            font-size: 4rem;
+            line-height: 1.3;
+            font-weight: 500;
+          }
+          
+          .btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            font-size: 1.6rem;
+            font-family: inherit;
+            font-weight: 500;
+            border: none;
+            padding: 1.25rem 4.5rem;
+            border-radius: 10rem;
+            cursor: pointer;
+            transition: all 0.3s;
+          }
+          
+          .btn:hover {
+            background-color: var(--color-primary-darker);
+          }
+          
+          .btn--text {
+            display: inline-block;
+            background: none;
+            font-size: 1.7rem;
+            font-family: inherit;
+            font-weight: 500;
+            color: var(--color-primary);
+            border: none;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: auto;
+          }
+          
+          p {
+            color: #666;
+          }
+          
+          button:focus {
+            outline: none;
+          }
+          
+          img {
+            transition: filter 0.5s;
+          }
+          
+          /* NAVIGATION */
+          .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 9rem;
+            width: 100%;
+            padding: 0 6rem;
+            z-index: 100;
+          }
+          
+          /* nav and stickly class at the same time */
+          .nav.sticky {
+            position: fixed;
+            background: linear-gradient(60deg, rgba(255, 255, 255, 0.7), #24272e);
+          }
+          
+          .nav__logo {
+            height: 4.5rem;
+            transition: all 0.3s;
+          }
+          
+          .nav__links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+          }
+          
+          .nav__item {
+            margin-left: 4rem;
+          }
+          
+          .nav__link:link,
+          .nav__link:visited {
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+          }
+
+          .nav__link:hover {
+            color: var(--color-primary);
+          }
+          
+          .nav__link--btn:link,
+          .nav__link--btn:visited {
+            padding: 0.8rem 2.5rem;
+            border-radius: 3rem;
+            background-color: var(--color-primary);
+          }
+          
+          .nav__link--btn:hover,
+          .nav__link--btn:active {
+            color: inherit;
+            background-color: var(--color-primary-darker);
+          }
+          
+          /* HEADER */
+          .header {
+            padding: 0 3rem;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .header__title {
+            flex: 1;
+            max-width: 115rem;
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            row-gap: 3rem;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            align-items: start;
+            justify-items: start;
+            transform: translateY(80px)
+          }
+          
+          h1 {
+            font-size: 5.5rem;
+            line-height: 1.35;
+            color: #fff;
+          }
+          
+          h4 {
+            font-size: 2.4rem;
+            font-weight: 500;
+          }
+          
+          .header__img {
+            width: 50rem;
+            grid-column: 2 / 3;
+            grid-row: 1 / span 4;
+            transform: translate(3.9rem,-8rem);
+            margin: 0;
+            padding: 0;
+          }
+          
+          .highlight {
+            position: relative;
+          }
+          
+          .highlight::after {
+            display: block;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.7;
+            transform: scale(1.07, 1.05) skewX(-15deg);
+            background-image: var(--gradient-primary);
+          }
+          
+          /* FEATURES */
+          .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 0 12rem;
+          }
+          
+          .features__img {
+            width: 100%;
+            border-radius: 20px;
+          }
+          
+          .features__feature {
+            align-self: center;
+            justify-self: center;
+            width: 70%;
+            font-size: 1.5rem;
+          }
+          
+          .features__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-primary-opacity);
+            height: 5.5rem;
+            width: 5.5rem;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+          }
+          
+          .features__icon svg {
+            height: 2.5rem;
+            width: 2.5rem;
+            fill: var(--color-primary);
+          }
+          
+          .features__header {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+          }
+          
+          /* OPERATIONS */
+          .operations {
+            max-width: 100rem;
+            margin: 0 auto;
+            border-radius: 30px;
+            background: linear-gradient(270deg, #00040f, #444);
+            box-shadow: #4fadce 10px 10px 500px 1px;
+          }
+          
+          .operations__tab-container {
+            display: flex;
+            justify-content: center;
+          }
+          
+          .operations__tab {
+            margin-right: 2.5rem;
+            transform: translateY(-50%);
+          }
+          
+          .operations__tab span {
+            margin-right: 1rem;
+            font-weight: 600;
+            display: inline-block;
+          }
+          
+          .operations__tab--1 {
+            background-color: var(--color-secondary);
+          }
+          
+          .operations__tab--1:hover {
+            background-color: var(--color-secondary-darker);
+          }
+          
+          .operations__tab--3 {
+            background-color: var(--color-tertiary);
+            margin: 0;
+          }
+          
+          .operations__tab--3:hover {
+            background-color: var(--color-tertiary-darker);
+          }
+          
+          .operations__tab--active {
+            transform: translateY(-66%);
+          }
+          
+          .operations__content {
+            display: none;
+          
+            /* JUST PRESENTATIONAL */
+            font-size: 1.7rem;
+            padding: 2.5rem 7rem 6.5rem 7rem;
+          }
+          
+          .operations__content p {
+            color: #aaa;
+          }
+
+          .operations__content--active {
+            display: grid;
+            grid-template-columns: 7rem 1fr;
+            column-gap: 3rem;
+            row-gap: 0.5rem;
+          }
+          
+          .operations__header {
+            font-size: 2.25rem;
+            font-weight: 500;
+            align-self: center;
+          }
+          
+          .operations__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 7rem;
+            width: 7rem;
+            border-radius: 50%;
+          }
+          
+          .operations__icon svg {
+            height: 2.75rem;
+            width: 2.75rem;
+          }
+          
+          .operations__content p {
+            grid-column: 2;
+          }
+          
+          .operations__icon--1 {
+            background-color: var(--color-secondary-opacity);
+          }
+          .operations__icon--2 {
+            background-color: var(--color-primary-opacity);
+          }
+          .operations__icon--3 {
+            background-color: var(--color-tertiary-opacity);
+          }
+          .operations__icon--1 svg {
+            fill: var(--color-secondary-darker);
+          }
+          .operations__icon--2 svg {
+            fill: var(--color-primary);
+          }
+          .operations__icon--3 svg {
+            fill: var(--color-tertiary);
+          }
+          
+          /* SLIDER */
+          .slider {
+            max-width: 100rem;
+            height: 50rem;
+            margin: 0 auto;
+            position: relative;
+          
+            /* IN THE END */
+            overflow: hidden;
+          }
+          
+          .slide {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50rem;
+            margin-left: 10rem;
+            margin-top: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          
+            /* THIS creates the animation! */
+            transition: transform 1s;
+          }
+          
+          .slide > img {
+            /* Only for images that have different size than slide */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          
+          .slider__btn {
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+          
+            border: none;
+            background: var(--color-primary-darker);
+            font-family: inherit;
+            color: #333;
+            border-radius: 50%;
+            height: 5.5rem;
+            width: 5.5rem;
+            font-size: 3.25rem;
+            cursor: pointer;
+          }
+          
+          .slider__btn--left {
+            left: 6%;
+            transform: translate(-50%, -50%);
+          }
+          
+          .slider__btn--right {
+            right: 6%;
+            transform: translate(50%, -50%);
+          }
+          
+          .dots {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+          }
+          
+          .dots__dot {
+            border: none;
+            background-color: #b9b9b9;
+            opacity: 0.7;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+            margin-right: 1.75rem;
+            cursor: pointer;
+            transition: all 0.5s;
+          
+            /* Only necessary when overlying images */
+            /* box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.7); */
+          }
+          
+          .dots__dot:last-child {
+            margin: 0;
+          }
+          
+          .dots__dot--active {
+            /* background-color: #fff; */
+            background-color: #888;
+            opacity: 1;
+          }
+          
+          /* TESTIMONIALS */
+          .testimonial {
+            width: 65%;
+            position: relative;
+          }
+          
+          .testimonial::before {
+            content: '\201C';
+            position: absolute;
+            top: -9.7rem;
+            left: -6.8rem;
+            line-height: 1;
+            font-size: 20rem;
+            font-family: inherit;
+            color: var(--color-primary);
+            z-index: 999;
+          }
+          
+          .testimonial__header {
+            font-size: 2.25rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+          }
+          
+          .testimonial__text {
+            font-size: 1.7rem;
+            margin-bottom: 3.5rem;
+            color: #666;
+            padding: 2px 100px 0px 2px;
+          }
+          
+          .testimonial__author {
+            margin-left: 3rem;
+            font-style: normal;
+          
+            display: grid;
+            grid-template-columns: 6.5rem 1fr;
+            column-gap: 2rem;
+          }
+          
+          .testimonial__photo {
+            grid-row: 1 / span 2;
+            width: 6.5rem;
+            border-radius: 50%;
+          }
+          
+          .testimonial__name {
+            font-size: 1.7rem;
+            font-weight: 500;
+            align-self: end;
+            margin: 0;
+          }
+          
+          .testimonial__location {
+            font-size: 1.5rem;
+          }
+          
+          .section__title--testimonials {
+            margin-bottom: 4rem;
+          }
+
+          .testimonial::before {
+            content: '\201C'; /* Add the quotation mark */
+            position: absolute;
+            top: -5.7rem;
+            left: -6.8rem;
+            line-height: 1;
+            font-size: 20rem;
+            font-family: inherit;
+            color: var(--color-primary);
+            z-index: -1;
+          }
+          
+          .testimonial {
+            width: 65%;
+            position: relative;
+          }
+          
+          .testimonial::before {
+            content: '\201C';
+            position: absolute;
+            top: -5.7rem;
+            left: -6.8rem;
+            line-height: 1;
+            font-size: 20rem;
+            font-family: inherit;
+            color: var(--color-primary);
+            z-index: -1;
+          }
+          
+          .testimonial__header {
+            font-size: 2.25rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+          }
+          
+          .testimonial__text {
+            font-size: 1.7rem;
+            margin-bottom: 3.5rem;
+            color: #666;
+          }
+          
+          .testimonial__author {
+            margin-left: 3rem;
+            font-style: normal;
+          
+            display: grid;
+            grid-template-columns: 6.5rem 1fr;
+            column-gap: 2rem;
+          }
+          
+          .testimonial__photo {
+            width: 6rem;
+            height: 5.8rem;
+            border-radius: 50%;
+          }
+          
+          .testimonial__name {
+            font-size: 1.7rem;
+            font-weight: 500;
+            align-self: end;
+            margin: 0;
+          }
+          
+          .testimonial__location {
+            font-size: 1.5rem;
+          }
+          
+          .section__title--testimonials {
+            margin-bottom: 4rem;
+          }
+          
+
+          /* Add this CSS to ensure proper positioning */
+.slide {
+  display: none;
+  position: absolute; /* Change from relative to absolute */
+}
+
+.slider {
+  position: relative; /* Add this to contain the slides */
+}
+
+/* Adjust the position of the arrows */
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider__btn--left {
+  left: 0;
+}
+
+.slider__btn--right {
+  right: 0;
+}
+
+/* Adjust the z-index of the testimonial content */
+.testimonial {
+  width: 100%; /* Adjust width as needed */
+  position: relative;
+  z-index: 1; /* Ensure the content appears above other slides */
+}
+          
+          /* SIGNUP */
+          .section--sign-up {
+            background: linear-gradient(45deg, #00040f, #444);
+            border-top: none;
+            /* border-bottom: 1px solid #444;  */ /*add/remove bottom line. */
+            text-align: center;
+            padding: 8rem 2rem;
+            border-radius: 50px;
+            margin: 0 100px;
+          }
+          
+          .section--sign-up .section__header {
+            color: #fff;
+            text-align: center;
+          }
+          
+          .section--sign-up .section__title {
+            margin-bottom: 6rem;
+          }
+          
+          .section--sign-up .btn {
+            font-size: 1.9rem;
+            padding: 2rem 5rem;
+          }
+          
+          /* FOOTER */
+          .footer {
+            padding: 10rem 3rem;      
+          }
+          
+          .footer__nav {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5rem;
+          }
+          
+          .footer__item {
+            margin-right: 4rem;
+          }
+          
+          .footer__link {
+            font-size: 1.6rem;
+            color: #eee;
+            text-decoration: none;
+            transition: 0.3s ease;
+          }
+
+          .footer__link:hover {
+            color: #4fadce;
+          }
+          
+          .footer__logo {
+            height: 5rem;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 5rem;
+          }
+          
+          .footer__copyright {
+            font-size: 1.4rem;
+            color: #aaa;
+            text-align: center;
+          }
+          
+          .footer__copyright .footer__link {
+            font-size: 1.4rem;
+          }
+          
+          /* MODAL WINDOW */
+          .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 60rem;
+            background-color: #f3f3f3;
+            padding: 5rem 6rem;
+            box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.5s;
+          }
+          
+          .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            transition: all 0.5s;
+          }
+          
+          .modal__header {
+            font-size: 3.25rem;
+            margin-bottom: 4.5rem;
+            line-height: 1.5;
+          }
+          
+          .modal__form {
+            margin: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            gap: 2.5rem;
+          }
+          
+          .modal__form label {
+            font-size: 1.7rem;
+            font-weight: 500;
+          }
+          
+          .modal__form input {
+            font-size: 1.7rem;
+            padding: 1rem 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+          }
+          
+          .modal__form button {
+            grid-column: 1 / span 2;
+            justify-self: center;
+            margin-top: 1rem;
+          }
+          
+          .btn--close-modal {
+            font-family: inherit;
+            color: inherit;
+            position: absolute;
+            top: 0.5rem;
+            right: 2rem;
+            font-size: 4rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+          }
+          
+          .hidden {
+            visibility: hidden;
+            opacity: 0;
+          }
+    </style>
+  </head>
+  <body>
+    <header class="header" id="start">
+      <nav class="nav" id="nav">
+        <a href="#start">
+          <img
+            src="https://ik.imagekit.io/mshcgnjju/logo.png?updatedAt=1710014965666"
+            href="#start"
+            alt="Bankist logo"
+            class="nav__logo"
+            id="logo"
+          />
+        </a>
+        <ul class="nav__links">
+          <li class="nav__item">
+            <a class="nav__link" href="#section--1">Features</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--2">Operations</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">Testimonials</a>
+          </li>
+          <li class="nav__item">
+            <a style="color: #00040f;" class="nav__link nav__link--btn btn--show-modal" href="/register"
+              >Open account</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__title">
+        <h1>
+          Beyond
+          <!-- Green highlight effect -->
+          <span class="highlight">banking</span>
+          into<br />
+          <span class="highlight">Infinity</span>
+        </h1>
+        <h4>A simpler banking experience for a simpler life.</h4>
+        <a href="#section--1"><button class="btn--text btn--scroll-to">Learn more &DownArrow;</button></a>
+        <img
+          src="https://modern-bank-ui.vercel.app/assets/robot.352cd501.png"
+          class="header__img"
+          alt="Minimalist bank items"
+        />
+      </div>
+    </header>
+
+    <section class="section" id="section--1">
+      <div class="section__title">
+        <h2 class="section__description">Features</h2>
+        <h3 class="section__header">
+          Everything you need in a modern bank and more.
+        </h3>
+      </div>
+
+      <div class="features">
+        <img
+          src="https://banking-app-website.netlify.app/assets/card-af071def.png"
+          alt="Computer"
+          class="features__img lazy-img"
+        />
+        <div class="features__feature">
+          <div class="features__icon">
+            <span style="color: #4fadce;" class="material-symbols-rounded">
+              desktop_windows
+              </span>
+          </div>
+          <h5 class="features__header">100% digital bank</h5>
+          <p>
+            Enjoy the convenience of banking from anywhere, anytime, with our seamless digital platform.
+          </p>
+        </div>
+
+        <div class="features__feature">
+          <div class="features__icon">
+            <span style="color: #4fadce;" class="material-symbols-rounded">
+              trending_up
+              </span>
+          </div>
+          <h5 class="features__header">Watch your money grow</h5>
+          <p>
+            Start investing effortlessly and watch your savings multiply over time with our intuitive investment options.
+          </p>
+        </div>
+        <img
+          src="https://media.istockphoto.com/id/1402430797/photo/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg?b=1&s=612x612&w=0&k=20&c=4qpmvjbEUn6fdROOC4I7GYJtSrap_J3BiZz0oap2H5w="
+          alt="Plant"
+          class="features__img lazy-img"
+        />
+
+        <img
+          src="https://media.istockphoto.com/id/1300003353/photo/close-up-male-hand-and-levitating-template-mockup-bank-credit-card-with-online-service.jpg?b=1&s=612x612&w=0&k=20&c=GEuKwhcRbA4lbutSa1gBGkKyHXWFOV0pTCy97Y3bxL0="
+          data-src="img/card.jpg"
+          alt="Credit card"
+          class="features__img lazy-img"
+        />
+        <div class="features__feature">
+          <div class="features__icon">
+            <span style="color: #4fadce;" class="material-symbols-rounded">
+              credit_card
+              </span>
+          </div>
+          <h5 class="features__header">Free debit card included</h5>
+          <p>
+            Access your funds easily with our free debit card, accepted worldwide.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HTML code for the operations section -->
+<section class="section" id="section--2">
+  <div class="section__title">
+      <h2 class="section__description">Operations</h2>
+      <h3 class="section__header">
+          Everything as simple as possible, but no simpler.
+      </h3>
+  </div>
+
+  <div class="operations">
+      <div class="operations__tab-container">
+          <button class="btn operations__tab operations__tab--1 operations__tab--active" data-tab="1" onclick="showContent(1)">
+              <span>01</span>Instant Transfers
+          </button>
+          <button class="btn operations__tab operations__tab--2" data-tab="2" onclick="showContent(2)">
+              <span>02</span>Instant Loans
+          </button>
+          <button class="btn operations__tab operations__tab--3" data-tab="3" onclick="showContent(3)">
+              <span>03</span>Instant Closing
+          </button>
+      </div>
+      <div class="operations__content operations__content--1 operations__content--active">
+          <div class="operations__icon operations__icon--1">
+            <span style="color: #ffbb00; font-size: 3rem;" class="material-symbols-rounded">
+              upload
+              </span>
+          </div>
+          <h5 class="operations__header">
+              Transfer money to anyone, instantly! No fees, no BS.
+          </h5>
+          <p>
+            Enjoy the freedom to transfer money to anyone, instantly and securely, without worrying about fees or hidden charges. Whether it's splitting bills with friends or sending funds to family overseas, our instant transfer service ensures your money gets where it needs to be when it needs to be there.
+          </p>
+      </div>
+
+      <div class="operations__content operations__content--2">
+          <div class="operations__icon operations__icon--2">
+            <span style="color: #4f98ce; font-size: 3rem;" class="material-symbols-rounded">
+              house
+              </span>
+          </div>
+          <h5 class="operations__header">
+              Buy a home or make your dreams come true, with instant loans.
+          </h5>
+          <p>
+            Turn your dreams into reality with our instant loan services. Whether you're looking to buy your dream home, finance your education, or start a business, our hassle-free loan process ensures quick access to funds. Say goodbye to lengthy approval processes and hello to making your aspirations come true with our instant loans.
+          </p>
+      </div>
+      <div class="operations__content operations__content--3">
+          <div class="operations__icon operations__icon--3">
+            <span style="color: red; font-size: 3rem;" class="material-symbols-rounded">
+              person_cancel
+              </span>
+          </div>
+          <h5 class="operations__header">
+              No longer need your account? No problem! Close it instantly.
+          </h5>
+          <p>
+            Need to close your account in a hurry? No problem! Our instant closing feature allows you to say goodbye to your account with just a few clicks. Whether you're switching banks or simplifying your finances, our seamless process ensures a hassle-free account closure experience, so you can move forward with confidence.
+          </p>
+      </div>
+  </div>
+</section>
+
+
+    <section class="section" id="section--3">
+      <div class="section__title section__title--testimonials">
+        <h2 class="section__description">Not sure yet?</h2>
+        <h3 class="section__header">
+          Millions of people are already making their lifes simpler.
+        </h3>
+      </div>
+
+      
+
+      <div class="slider">
+        <div class="slide slide--1">
+          <div class="testimonial">
+            <h5 class="testimonial__header">Best financial decision ever!</h5>
+            <blockquote class="testimonial__text">
+              Making the switch to Infinity Finance was the best decision I ever made. Their seamless digital platform and excellent customer service have made managing my finances a breeze. I highly recommend Infinity Finance to anyone looking for a hassle-free banking experience.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="https://media.istockphoto.com/id/1299077558/photo/lead-yourself-to-a-life-of-success.webp?b=1&s=170667a&w=0&k=20&c=mMNsDC0CKzX9W6lP9ITaeaOynmF5a3y6AP-r-_jZ4A8=" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Aarav Lynn</h6>
+              <p class="testimonial__location">San Francisco, USA</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide slide--2">
+          <div class="testimonial">
+            <h5 class="testimonial__header">
+              The last step to becoming a complete minimalist
+            </h5>
+            <blockquote class="testimonial__text">
+              Infinity Finance has been the final piece of the puzzle in my journey towards minimalism. Their user-friendly interface and efficient services have helped me streamline my finances and achieve my goal of living a simpler, more intentional life.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="https://media.istockphoto.com/id/1460864291/photo/beautiful-middle-aged-woman.webp?b=1&s=170667a&w=0&k=20&c=Nyn4kR4-iV3tR3ILjDiCzWuPGzE4iFiEhl0yb0xqDy4=" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Miyah Miles</h6>
+              <p class="testimonial__location">London, UK</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide slide--3">
+          <div class="testimonial">
+            <h5 class="testimonial__header">
+              Finally free from old-school banks
+            </h5>
+            <blockquote class="testimonial__text">
+              Switching to Infinity Finance was a game-changer for me. Say goodbye to long queues and outdated banking systems! With Infinity Finance, I have the freedom to manage my finances on-the-go, without any hassle. It's time to break free from traditional banks and embrace the future of banking with Infinity.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="https://images.pexels.com/photos/8371721/pexels-photo-8371721.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Francisco Gomes</h6>
+              <p class="testimonial__location">Lisbon, Portugal</p>
+            </address>
+          </div>
+        </div>
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="section section--sign-up">
+      <div class="section__title">
+        <h3 class="section__header">
+          The best day to join Infinity Finance was one year ago. The second best is
+          today!
+        </h3>
+      </div>
+      <a href="/register"><button class="btn btn--show-modal">Open your free account today!</button></a>
+    </section>
+
+    <footer class="footer">
+      <ul class="footer__nav">
+        <li class="footer__item">
+          <a class="footer__link" href="#">About</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="pricing/">Pricing</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Terms of Use</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Privacy Policy</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Careers</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="blog/">Blog</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="contact/">Contact Us</a>
+        </li>
+      </ul>
+      <img src="https://ik.imagekit.io/mshcgnjju/logo.png?updatedAt=1710014965666" alt="Logo" class="footer__logo" />
+      <p class="footer__copyright">
+        &copy; Copyright by
+        <a
+          class="footer__link twitter-link"
+          target="_blank"
+          href="https://github.com/codegallantx"
+          >CodeGallantX</a
+        >
+      </p>
+
+      <div>
+        
+      </div>
+    </footer>
+  </body>
+</html>
