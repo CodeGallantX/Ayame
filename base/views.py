@@ -7,7 +7,7 @@ from account.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from Transactions.models import Transaction
-from account.models import CustomUser
+from account.models import AccountData
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
