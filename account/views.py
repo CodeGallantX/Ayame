@@ -30,12 +30,13 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('base:dashboard')
+            return redirect('account:login')  # Redirect to the login page after registration
         else:
             messages.error(request, 'Invalid username or password')
     else:
         form = CustomUserCreationForm()
     return render(request, 'account/register.html', {'form': form})
+
 
 def login_view(request):
     if request.method == 'POST':

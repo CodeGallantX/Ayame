@@ -45,7 +45,7 @@ urlpatterns = [
     #path("pay_bill/", infinity_views.pay_bill, name='pay_bill'),
 
     # ACCOUNT URLS
-    path('account/', include('account.urls')),
+    path('', include('account.urls')),
 ]
 
 

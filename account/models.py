@@ -38,8 +38,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
 
 class AccountData(models.Model):
     user = models.CharField(max_length=20, unique=True)
-    balance = models.DecimalField(max_digits=7, decimal_places=2, default=0.0)
+    balance = models.DecimalField(max_digits=7, decimal_places=2, default=100.0)
     account_number = models.IntegerField(unique=True)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.balance = 100.0
+        super().save(*args, **kwargs)
