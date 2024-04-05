@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.generic import CreateView
 from django.contrib.auth import authenticate, login, logout
-from account.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.contrib import messages
@@ -28,9 +27,9 @@ def error_404(request, exception):
 
 @login_required
 def dashboard(request):
-    user = request.user
+    balance = request.balance
     try:
-        wallet = AccountData.objects.get(user=user)
+        wallet = AccountData.objects.get(balance=balance)
         recent_transactions = Transaction.objects.filter(wallet=wallet).order_by('-timestamp')[:5]
     except AccountData.DoesNotExist:
         wallet = None

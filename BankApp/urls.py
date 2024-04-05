@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from base import views  # Import the views from base app
 from account import urls
+from Transactions import urls
 
 
 urlpatterns = [
@@ -35,7 +36,7 @@ urlpatterns = [
   #  path('buy-airtime/', infinity_views.buy_airtime, name='buy_airtime'),
 
     # TRANSACTIONS
-    # path('transactions/', include('transactions.urls')),
+    path('', include('Transactions.urls')),
 
     #path("process_account_action/", infinity_views.get_account_action, name='get_account_action'),
     #path("withdraw/", infinity_views.withdraw, name='withdraw'),

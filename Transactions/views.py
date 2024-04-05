@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import FormView
@@ -35,7 +33,7 @@ def deposit(request):
             return redirect('dashboard')  # Redirect to the dashboard page
     else:
         form = TransactionForm()
-    return render(request, 'base/deposit.html', {'form': form})
+    return render(request, 'base/dashboard.html', {'form': form})
 
 def withdrawal(request):
     if request.method == 'POST':
@@ -46,7 +44,7 @@ def withdrawal(request):
             return redirect('dashboard')  # Redirect to the dashboard page
     else:
         form = TransactionForm()
-    return render(request, 'base/withdrawal.html', {'form': form})
+    return render(request, 'base/dashboard.html', {'form': form})
 
 # Similarly, implement views for other transaction operations like transfer, payment, etc.
 

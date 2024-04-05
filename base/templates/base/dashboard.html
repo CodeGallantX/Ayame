@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="https://ik.imagekit.io/mshcgnjju/image.png?updatedAt=1710462047544" />
     
     <!----======== CSS ======== -->
-    <style>
+<style>
         /* ===== Google Font Import - Poppins ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 *{
@@ -240,7 +240,8 @@ nav.close ~ .dashboard{
     transition: var(--tran-05);
     z-index: 10;
 }
-nav.close ~ .dashboard .top{
+nav.close ~ .dashboard .top,
+nav.close ~ .account .top{
     left: 73px;
     width: calc(100% - 73px);
 }
@@ -553,7 +554,7 @@ body.dark .boxes .box:hover {
     }
 }
 
-#withdrawSection {
+#withdrawSection, #depositSection, #transferSection {
     display: none;
     padding: 20px;
     background-color: #f9f9f9;
@@ -562,14 +563,147 @@ body.dark .boxes .box:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#withdrawSection h2 {
+#withdrawSection h1, #depositSection h1, #transferSection h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+body.dark #withdrawSection h1, 
+body.dark #depositSection h1,
+body.dark #transferSection h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+#withdrawForm {
+    margin-bottom: 20px;
+}
+
+body.dark #withdrawSection,
+body.dark #depositSection,
+body.dark #transferSection {
+    display: none;
+    padding: 20px;
+    background-color: #00040f;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #CCC;
+    
+}
+
+body.dark #withdrawSection h2,
+body.dark #depositSection h2,
+body.dark #transferSection h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
+body.dark #withdrawSection a,
+body.dark #depositSection a,
+body.dark #transferSection a {
+    color: #4fadce;
+}
+
+/*
 #withdrawForm {
     margin-bottom: 20px;
+}*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#withdrawSection form,
+#depositSection form,
+#transferSection form {
+    margin-top: 5rem;
+}
+
+body.dark #withdrawSection label,
+body.dark #depositSection label,
+body.dark #transferSection label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ddd;
+    text-align: left; /* Adjusted text alignment */
+}
+
+#withdrawSection input[type="text"], #withdrawSection input[type="number"], #withdrawSection input[type="password"], #withdrawSection select,
+#depositSection input[type="text"], #depositSection input[type="number"], #depositSection input[type="password"], #depositSection select,
+#transferSection input[type="text"], #transferSection input[type="number"], #transferSection input[type="password"], #transferSection select {
+    width: calc(100% - 20px); /* Adjusted input width */
+    padding: 10px;
+    background-color: #eee;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+body.dark #withdrawSection
+input[type="text"],
+input[type="number"], 
+input[type="password"],
+select,
+
+body.dark #depositSection
+input[type="text"],
+input[type="number"], 
+input[type="password"],
+select,
+
+body.dark #transferSection
+input[type="text"],
+input[type="number"], 
+input[type="password"],
+select {
+    width: calc(100% - 20px); /* Adjusted input width */
+    padding: 10px;
+    background: #00040f;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: #ff6347;
+    margin-top: 5px;
+    text-align: left; /* Adjusted text alignment */
+}
+
+.btn-con {
+    display: flex;
+    justify-content: space-between; /* Adjusted button alignment */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+body.dark .btn {
+    background-color: #4fbdce;
+    color: #00040f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
 }
 
 .form-group {
@@ -582,7 +716,9 @@ label {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="password"], 
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -607,6 +743,10 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+body.dark button[type="submit"]:hover {
+    background-color: #1284fd;
+}
+
 button[type="button"] {
     background-color: #6c757d;
     color: #fff;
@@ -616,7 +756,14 @@ button[type="button"]:hover {
     background-color: #5a6268;
 }
 
-    </style>
+body.dark button[type="button"] {
+    background-color: #e06f79;
+}
+
+body.dark button[type="button"]:hover {
+    background-color: #dd3140;
+}
+</style>
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -680,13 +827,13 @@ button[type="button"]:hover {
             <i class="uil uil-bars sidebar-toggle"></i>
             <div class="search-box">
                 <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
+                <input type="text" placeholder="Search here..." aria-label="search">
             </div>
-            <i  id="user_profile" class="uil uil-user"></i>
+            <i  class="uil uil-user"></i>
         </div>
         <div>
-            <h2 class="number">Welcome {{ user.username }}
-        </h2>
+            <h2 class="number">Welcome {{ user.username }}</h2>
+        </div>
 
         <div class="dash-content">
             <div class="overview">
@@ -700,17 +847,17 @@ button[type="button"]:hover {
         <span class="text">Wallet</span>
         <span class="number">${{ wallet.balance }}</span>
     </div>
-</div>
 
-                    <div class="box box2">
+
+                    <div onclick="showTransactions()" class="box box2">
                         <i class="uil uil-clock"></i>
                         <span class="text">Pending Transactions</span>
-                        <span class="number">50</span>
+                        <span class="number">3</span>
                     </div>
-                    <div class="box box3">
+                    <div  class="box box3">
                         <i class="uil uil-exchange-alt"></i>
-                        <span class="text">Transfers</span>
-                        <span class="number">80</span>
+                        <span  class="text">Transfers</span>
+                        <span class="number">8</span>
                     </div>
                 </div>
             </div>
@@ -743,8 +890,7 @@ button[type="button"]:hover {
         </table>
     </div>
 </div>
-
-            </div>
+</div>
 </section>
 
       <!-- accounts.html -->
@@ -753,9 +899,9 @@ button[type="button"]:hover {
         <i class="uil uil-bars sidebar-toggle"></i>
         <div class="search-box">
             <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here...">
+            <input type="text" placeholder="Search here..." aria-label="search">
         </div>
-        <i  id="user_profile" class="uil uil-user"></i>
+        <i  class="uil uil-user"></i>
     </div>
     <div class="dash-content">
         <div class="title">
@@ -765,11 +911,11 @@ button[type="button"]:hover {
         <div class="boxes">
             <!-- Add your transaction boxes here -->
             <div id="userBox" class="box box1">
-                <i class="fa fa-us"></i>
+                <i class="fa fa-user"></i>
                 <span class="text">User</span>
             </div>
             <div id="savingsBox" class="box box2">
-                <i class="fa fa-piggy-bank-o"></i>
+                <i class="fa fa-piggy-bank"></i>
                 <span class="text">Savings</span>
             </div>
             <div id="currentBox" class="box box3">
@@ -779,6 +925,29 @@ button[type="button"]:hover {
         </div>
     </div>
 </div>
+
+<!------------------------------------TRANSACTION ZONE---------------------------------------->
+<!-- user.html -->
+<div id="userSection" class="dashboard" style="display: none;">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+        <i class="uil uil-user"></i>
+    </div>
+    <div class="dash-content">
+        <div class="title">
+            <i class="fa fa-user-circle"></i>
+            <span class="text">User</span>
+        </div>
+    <div class="container">
+       
+    <div class="btn-con">
+        <button type="button" class="btn" onclick="window.location.href='#accounts/'"> <i class="fa-chevron-circle-left"></i> Back</button>
+    </div>
+</div>
+</div>
+
+
+<!------------------------------------ACCOUNT ZONE---------------------------------------->
     
     <!-- transactions.html -->
 <div id="transactions" class="dashboard" style="display:none;">
@@ -786,9 +955,9 @@ button[type="button"]:hover {
         <i class="uil uil-bars sidebar-toggle"></i>
         <div class="search-box">
             <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here...">
+            <input type="text" placeholder="Search here..." aria-label="search">
         </div>
-        <i  id="user_profile" class="uil uil-user"></i>
+        <i  class="uil uil-user"></i>
     </div>
     <div class="dash-content">
         <div class="title">
@@ -797,15 +966,15 @@ button[type="button"]:hover {
         </div>
         <div class="boxes">
             <!-- Add your transaction boxes here -->
-            <div id="depositBox" class="box box1">
+            <div onclick="showDepositForm()" id="depositBox" class="box box1">
                 <i class="uil uil-money-bill"></i>
                 <span class="text">Deposit Money</span>
             </div>
-            <div id="withdrawBox" class="box box2">
+            <div onclick="showWithdrawForm()" id="withdrawBox" class="box box2">
                 <i class="uil uil-money-withdraw"></i>
                 <span class="text">Withdraw Money</span>
             </div>
-            <div id="transferBox" class="box box3">
+            <div onclick="showTransferForm()" id="transferBox" class="box box3">
                 <i class="uil uil-exchange-alt"></i>
                 <span class="text">Transfer Funds</span>
             </div>
@@ -818,43 +987,143 @@ button[type="button"]:hover {
 
 <!------------------------------------TRANSACTION ZONE---------------------------------------->
 <!-- withdraw.html -->
-<div id="withdrawSection" style="display: none;">
-{% block content %}
-<h2>Withdraw Money</h2>
-<form method="post" action="{% url 'withdraw'%}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Withdraw</button>
-</form>
-{% endblock %}
-<div id="withdrawMessage"></div>
-</div>
+<div id="withdrawSection" class="dashboard" style="display: none;">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+            <h1>Withdraw</h1>
+            <i class="uil uil-user"></i>
+        </div>
+        <div class="container">
+    <form method="POST" id="withdrawForm">
+        {% csrf_token %}
 
-<!-- depositForm.html 
-<div id="withdrawSection" style="display: none;">
-{% block content %}
-<h2>Deposit Money</h2>
-<form method="post" action="{% url 'deposit'%}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Make Deposit</button>
-</form>
-{% endblock %}
-<div id="depositMessage"></div>
-</div>-->
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" min="50" name="amount" required><br>
 
-<!-- transferForm.html -->
-<div id="transferSection" style="display: none;">
-{% block content %}
-<h2>Transfer Money</h2>
-<form method="post" action="{% url 'transfer'%}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Transfer</button>
-</form>
-{% endblock %}
-<div id="transferMessage"></div>
+        <label for="account_type">Account:</label>
+        <select id="account_type" required>
+            <option>Select account</option>
+            <option>Savings</option>
+            <option>Current</option>
+        </select>
+    
+        <label for="pin">PIN:</label> <!-- Added colon for consistency -->
+        <input type="password" name="pin" min="4" max="4" id="pin" placeholder="Enter 4-digit PIN" required>
+           
+        <div class="btn-con">
+            <button type="submit" class="btn">Withdraw</button>
+            <button type="button" class="btn" onclick="window.location.href='#transactions/'">Cancel</button>
+        </div>
+        <p>Want to do something else? <a href="/#transactions">Back</a></p>
+    </form>
 </div>
+    </div>
+
+    <div id="depositSection" class="dashboard" style="display: none;">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+            <h1>Deposit</h1>
+            <i class="uil uil-user"></i>
+        </div>
+        <div class="container">
+    <form method="POST" id="depositForm">
+        {% csrf_token %}
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" min="50" name="amount" required><br>
+
+        <label for="account_type">Account:</label>
+        <select id="account_type" required>
+            <option>Select account</option>
+            <option>Savings</option>
+            <option>Current</option>
+        </select>
+    
+        <label for="pin">PIN:</label> <!-- Added colon for consistency -->
+        <input type="password" name="pin" min="4" max="4" id="pin" placeholder="Enter 4-digit PIN" required>
+           
+        <div class="btn-con">
+            <button type="submit" class="btn">Deposit</button>
+            <button type="button" class="btn" onclick="window.location.href='/'">Cancel</button>
+        </div>
+        <p>Want to do something else? <a href="/#transactions">Back</a></p>
+    </form>
+</div>
+    </div>
+
+    <div id="transferSection" class="dashboard" style="display: none;">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+            <h1>Transfer</h1>
+            <i class="uil uil-user"></i>
+        </div>
+        <div class="container">
+    <form method="POST" id="transferForm">
+        {% csrf_token %}
+
+        <label for="account_number">Recipient Account Number:</label>
+        <input type="number" id="account_number" minlength="10" maxlength="10" name="account_number" required><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" min="50" name="amount" required><br>
+
+        <label for="account_type">Bank:</label>
+        <select id="bank_choice" required>
+            <option>Select account</option>
+            <option>Access Bank</option>
+            <option>Zenith Bank</option>
+            <option>Guaranty Trust Bank (GTBank)</option>
+            <option>First Bank of Nigeria</option>
+            <option>United Bank for Africa (UBA)</option>
+            <option>Ecobank Nigeria</option>
+            <option>Fidelity Bank Nigeria</option>
+            <option>Union Bank of Nigeria</option>
+            <option>Stanbic IBTC Bank</option>
+            <option>Sterling Bank</option>
+            <option>Citibank Nigeria</option>
+            <option>Wema Bank</option>
+            <option>Heritage Bank</option>
+            <option>Keystone Bank</option>
+            <option>Polaris Bank</option>
+            <option>LAPO Microfinance Bank</option>
+            <option>AB Microfinance Bank Nigeria</option>
+            <option>NPF Microfinance Bank</option>
+            <option>Accion Microfinance Bank</option>
+            <option>Fortis Microfinance Bank</option>
+            <option>FINCA Microfinance Bank</option>
+            <option>HASAL Microfinance Bank</option>
+            <option>Grooming Microfinance Bank</option>
+            <option>Page Microfinance Bank</option>
+            <option>Mainstreet Microfinance Bank</option>
+            <option>Moniepoint</option>
+            <option>Paga</option>
+            <option>Flutterwave</option>
+            <option>Interswitch</option>
+            <option>Quickteller</option>
+            <option>Paystack</option>
+            <option>Remita</option>
+            <option>OPay</option>
+            <option>Carbon (formerly Paylater)</option>
+            <option>Kudi</option>
+            <option>PalmPay</option>
+        </select>
+    
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br>
+
+        <label for="pin">PIN:</label> <!-- Added colon for consistency -->
+        <input type="password" name="pin" min="4" max="4" id="pin" placeholder="Enter 4-digit PIN" required>
+           
+        <div class="btn-con">
+            <button type="submit" class="btn">Transfer</button>
+            <button type="button" class="btn" onclick="window.location.href='/'">Cancel</button>
+        </div>
+        <p>Want to do something else? <a href="/#transactions">Back</a></p>
+    </form>
+</div>
+    </div>
+
+
 <!------------------------------------TRANSACTION ZONE---------------------------------------->
     
     <div id="support" class="dashboard" style="display: none;">
@@ -862,9 +1131,9 @@ button[type="button"]:hover {
             <i class="uil uil-bars sidebar-toggle"></i>
             <div class="search-box">
                 <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
+                <input type="text" placeholder="Search here..." aria-label="search">
             </div>
-            <i  id="user_profile" class="uil uil-user"></i>
+            <i  class="uil uil-user"></i>
         </div>
         <div class="dash-content">
             <div class="title">
@@ -897,7 +1166,7 @@ button[type="button"]:hover {
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Search here...">
             </div>
-            <i  id="user_profile" class="uil uil-user"></i>
+            <i  class="uil uil-user"></i>
         </div>
         <div class="dash-content">
             <div class="title">
@@ -922,7 +1191,6 @@ button[type="button"]:hover {
             </div>
         </div>
     </div>
-    
     
 
     <script>
@@ -963,7 +1231,13 @@ button[type="button"]:hover {
         function showDashboard() {
             document.getElementById('dashboard').style.display = 'block';
             document.getElementById('accounts').style.display = 'none';
+            document.getElementById('userSection').style.display = 'none';
+            document.getElementById('savingsSection').style.display = 'none';
+            document.getElementById('currentSection').style.display = 'none';
             document.getElementById('transactions').style.display = 'none';
+            document.getElementById('withdrawSection').style.display = 'none';
+            document.getElementById('depositSection').style.display = 'none';
+            document.getElementById('transferSection').style.display = 'none';
             document.getElementById('support').style.display = 'none';
             document.getElementById('settings').style.display = 'none';
         }
@@ -971,7 +1245,13 @@ button[type="button"]:hover {
         function showAccounts() {
             document.getElementById('dashboard').style.display = 'none';
             document.getElementById('accounts').style.display = 'block';
+            document.getElementById('userSection').style.display = 'none';
+            document.getElementById('savingsSection').style.display = 'none';
+            document.getElementById('currentSection').style.display = 'none';            
             document.getElementById('transactions').style.display = 'none';
+            document.getElementById('withdrawSection').style.display = 'none';
+            document.getElementById('depositSection').style.display = 'none';
+            document.getElementById('transferSection').style.display = 'none';
             document.getElementById('support').style.display = 'none';
             document.getElementById('settings').style.display = 'none';
         }
@@ -979,7 +1259,13 @@ button[type="button"]:hover {
         function showTransactions() {
             document.getElementById('dashboard').style.display = 'none';
             document.getElementById('accounts').style.display = 'none';
+            document.getElementById('userSection').style.display = 'none';
+            document.getElementById('savingsSection').style.display = 'none';
+            document.getElementById('currentSection').style.display = 'none';
             document.getElementById('transactions').style.display = 'block';
+            document.getElementById('withdrawSection').style.display = 'none';
+            document.getElementById('depositSection').style.display = 'none';
+            document.getElementById('transferSection').style.display = 'none';
             document.getElementById('support').style.display = 'none';
             document.getElementById('settings').style.display = 'none';
         }
@@ -988,7 +1274,13 @@ button[type="button"]:hover {
 function showSupport() {
     document.getElementById('dashboard').style.display = 'none';
     document.getElementById('accounts').style.display = 'none';
+    document.getElementById('userSection').style.display = 'none';
+    document.getElementById('savingsSection').style.display = 'none';
+    document.getElementById('currentSection').style.display = 'none';
     document.getElementById('transactions').style.display = 'none';
+    document.getElementById('withdrawSection').style.display = 'none';
+    document.getElementById('depositSection').style.display = 'none';
+    document.getElementById('transferSection').style.display = 'none';
     document.getElementById('support').style.display = 'block';
     document.getElementById('settings').style.display = 'none';
 }
@@ -997,11 +1289,64 @@ function showSupport() {
 function showSettings() {
     document.getElementById('dashboard').style.display = 'none';
     document.getElementById('accounts').style.display = 'none';
+    document.getElementById('userSection').style.display = 'none';
+    document.getElementById('savingsSection').style.display = 'none';
+    document.getElementById('currentSection').style.display = 'none';
     document.getElementById('transactions').style.display = 'none';
+    document.getElementById('withdrawSection').style.display = 'none';
+    document.getElementById('depositSection').style.display = 'none';
+    document.getElementById('transferSection').style.display = 'none';
     document.getElementById('support').style.display = 'none';
     document.getElementById('settings').style.display = 'block';
 }
 
+function showWithdrawForm() {
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('accounts').style.display = 'none';
+    document.getElementById('userSection').style.display = 'none';
+    document.getElementById('savingsSection').style.display = 'none';
+    document.getElementById('currentSection').style.display = 'none';
+    document.getElementById('transactions').style.display = 'none';
+    document.getElementById('withdrawSection').style.display = 'block';
+    document.getElementById('depositSection').style.display = 'none';
+    document.getElementById('transferSection').style.display = 'none';
+    document.getElementById('support').style.display = 'none';
+    document.getElementById('settings').style.display = 'none';
+}
+
+function showDepositForm() {
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('accounts').style.display = 'none';
+    document.getElementById('userSection').style.display = 'none';
+    document.getElementById('savingsSection').style.display = 'none';
+    document.getElementById('currentSection').style.display = 'none';
+    document.getElementById('transactions').style.display = 'none';
+    document.getElementById('withdrawSection').style.display = 'none';
+    document.getElementById('depositSection').style.display = 'block';
+    document.getElementById('transferSection').style.display = 'none';
+    document.getElementById('support').style.display = 'none';
+    document.getElementById('settings').style.display = 'none';
+}
+
+function showTransferForm() {
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('accounts').style.display = 'none';
+    document.getElementById('userSection').style.display = 'none';
+    document.getElementById('savingsSection').style.display = 'none';
+    document.getElementById('currentSection').style.display = 'none';
+    document.getElementById('transactions').style.display = 'none';
+    document.getElementById('withdrawSection').style.display = 'none';
+    document.getElementById('depositSection').style.display = 'none';
+    document.getElementById('transferSection').style.display = 'block';
+    document.getElementById('support').style.display = 'none';
+    document.getElementById('settings').style.display = 'none';
+}
+</script>
+</div>
+</html>
+
+
+<!--
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  document.getElementById('withdrawBox').addEventListener('click', function() {
         // Toggle the display property of the withdraw form
@@ -1021,8 +1366,4 @@ function showSettings() {
     });
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-</script>
-
-</body>
-</html>
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
